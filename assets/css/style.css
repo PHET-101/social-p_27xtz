@@ -1,0 +1,100 @@
+body {
+    --sb-track-color: #2b2a2a;
+    --sb-thumb-color: #151515;
+    --sb-size: 14px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+.bg {
+    background-image: url("../image/background.png");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.custom-scrollbar {
+    -ms-overflow-style: none;
+    /* ซ่อน scrollbar ใน IE/Edge */
+    scrollbar-width: none;
+    /* ซ่อน scrollbar ใน Firefox */
+}
+
+.custom-scrollbar {
+    --sb-track-color: #2b2a2a;
+    --sb-thumb-color: #151515;
+    --sb-size: 14px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+
+}
+
+
+
+
+
+.custom-textarea textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    resize: none;
+    color: #fff;
+    height: 96px;
+    border: 1px solid #414141;
+    background-color: transparent;
+    font-family: inherit;
+}
+
+.send-icon ion-icon {
+    font-size: 28px;
+}
+
+.like-icon ion-icon {
+    font-size: 26px;
+    color: #ff4b4b;
+}
+
+.profile-icon ion-icon {
+    font-size: 200px;
+}
