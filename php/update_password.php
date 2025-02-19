@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($update_stmt->execute()) {
                 $message = "เปลี่ยนรหัสผ่านสำเร็จ!";
-                header("Location: ../index.php");
+                header("Location: ../profile.php?user_id=$user_id");
                 exit;
             } else {
                 $message = "เกิดข้อผิดพลาด: " . $conn->error;
