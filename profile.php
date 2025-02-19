@@ -148,7 +148,11 @@ $postCount = $postCountResult->fetch_assoc()['post_count'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรไฟล์ของ <?php echo htmlspecialchars($user['display_name']); ?></title>
-    <link rel="stylesheet" href="styles.css"> <!-- เพิ่มไฟล์ CSS ถ้าต้องการ -->
+    <style>
+        .icon-custom {
+            font-size: 185px;
+        }
+    </style>
 </head>
 
 <body>
@@ -159,7 +163,7 @@ $postCount = $postCountResult->fetch_assoc()['post_count'];
             <?php if (!empty($user['avatar']) && file_exists($user['avatar'])): ?>
                 <img src="<?php echo $user['avatar']; ?>" alt="Profile Picture" class="w-full h-full object-cover">
             <?php else: ?>
-                <ion-icon name="person-circle-outline" class="text-gray-400 text-9xl"></ion-icon>
+                <ion-icon name="person-circle-outline" class="text-gray-400 icon-custom"></ion-icon>
             <?php endif; ?>
         </div>
 
@@ -368,7 +372,7 @@ $postCount = $postCountResult->fetch_assoc()['post_count'];
 
 
             <!-- แสดงคอมเมนต์ -->
-            <div id="comments-<?= $row['id'] ?>" class="mt-4 space-y-2 rounded-lg max-h-80 cursor-pointer overflow-y-auto rounded-lg custom-scrollbar">
+            <div id="comments-<?= $row['id'] ?>" class="mt-4 space-y-2 max-h-80 cursor-pointer overflow-y-auto rounded-lg custom-scrollbar">
                 <?php
                 $comments = $conn->query("SELECT comments.*, users.display_name, users.username, users.avatar FROM comments 
               JOIN users ON comments.user_id = users.id 
