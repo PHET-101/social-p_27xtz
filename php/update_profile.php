@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["email"] = $email;
         $_SESSION["description"] = $description;
         $_SESSION["avatar"] = $image;
-        header("Location: ../profile.php?user_id=$user_id");
+        header("Location: ../profile.php?accoute_id=$user_id");
         exit();
     } else {
         echo "<script>alert('เกิดข้อผิดพลาด กรุณาลองใหม่'); window.history.back();</script>";
