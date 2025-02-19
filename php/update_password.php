@@ -2,8 +2,6 @@
 session_start();
 include 'config.php';
 
-$message = '';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // รับค่าจากฟอร์ม
     $passwordOld = trim($_POST["passwordOld"]);
@@ -27,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // ตรวจสอบว่ารหัสผ่านปัจจุบันถูกต้องหรือไม่
         if (!password_verify($passwordOld, $db_password)) {
-            $message = "รหัสผ่านปัจจุบันไม่ถูกต้อง!";
+            echo "<script>alert('รหัสผ่านปัจจุบันไม่ถูกต้อง!'); window.history.back();</script>";
         } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/", $passwordNew)) {
-            $message = "รหัสผ่านใหม่ต้องมีอย่างน้อย 8 ตัว, มีตัวพิมพ์ใหญ่, ตัวเลข และอักขระพิเศษ!";
+            echo "<script>alert('รหัสผ่านใหม่ต้องมีอย่างน้อย 8 ตัว, มีตัวพิมพ์ใหญ่, ตัวเลข และอักขระพิเศษ!'); window.history.back();</script>";
         } elseif ($passwordNew !== $confirm_password) {
-            $message = "รหัสผ่านใหม่และยืนยันรหัสผ่านไม่ตรงกัน!";
+            echo "<script>alert('รหัสผ่านใหม่และยืนยันรหัสผ่านไม่ตรงกัน!'); window.history.back();</script>";
         } else {
             // อัปเดตรหัสผ่านใหม่
             $hashed_password = password_hash($passwordNew, PASSWORD_DEFAULT);
@@ -50,5 +48,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-echo $message;
 ?>
